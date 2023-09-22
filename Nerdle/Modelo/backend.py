@@ -28,7 +28,7 @@ class Jugador:
     intentos = 0
     repetir = True
     adivinanza = "3+50+2=5"
-
+    decision = True
     def __init__(self, cantidad):
         self.cantidad = cantidad
         self.tablero = []
@@ -50,32 +50,35 @@ class Jugador:
         print("")
         while self.intentos <= len(self.tablero):
             operacion = input("¿Cuál es tu adivinanza de 8 elementos?: ")
-            while len(operacion) == len(self.adivinanza):
+            while self.decision:
                 if len(operacion) == len(self.adivinanza):
                     self.intentos += 1
-                    self.tablero.append([operacion])
-                    for i in range(self.cantidad):
+                    self.tablero.insert(self.intentos, [operacion])
+                    for i in range(6):
                         print(" ".join(self.tablero[i]))
-                    if operacion == self.adivinanza:
+                    if operacion[::] == self.adivinanza[::]:
                         print(f"Felicidades, has ganado en {self.intentos} intentos.")
+                        self.decision = False
                         self.iniciar_nuevo_juego()
                     else:
-                        for operador in operacion:
-                            for operar in self.adivinanza:
-                                if operador == operar and operador == int:
-                                    print("Tienes un  número encontrado.")
-
+                        for operador in operacion[::]:
+                            for operar in self.adivinanza[::]:
+                                if operador == operar:
+                                    print(f"Tienes el {operador} encontrado.")
+                                else:
+                                    continue
+                    self.adivinar_secuencia()
                 else:
                     print(f"La adivinanza debe tener {len(self.adivinanza)} elementos.")
-                    self.adivinar_secuencia()
                     self.intentos += 1
+                    break
 
 
 
     def secuencia_no_adivinada(self):
         pass
 
-    def iniciar_nuevo_juego(self, opcion):
+    def iniciar_nuevo_juego(self):
         pass
 
 
