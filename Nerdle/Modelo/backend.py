@@ -25,11 +25,52 @@ class Nerdle:
 
 
 class Jugador:
-    def configurar_intentos(self, cantidad):
-        pass
+    intentos = 0
+    repetir = True
+    adivinanza = "3+50+2=5"
 
-    def adivinar_secuencia(self, secuencia):
-        pass
+    def __init__(self, cantidad):
+        self.cantidad = cantidad
+        self.tablero = []
+        while self.repetir:
+            if 5 < cantidad < 9:
+                for i in range(cantidad):
+                    self.tablero.append(["_" for i in range(8)])
+                for i in range(cantidad):
+                    print(" ".join(self.tablero[i]))
+
+            else:
+                print("Debe ingresar un número de intentos válidos (6 a 8).")
+                self.numero_de_intentos = int(input("¿Cuántos intentos quieres tener?: "))
+                Jugador(self.numero_de_intentos)
+            self.repetir = False
+            self.adivinar_secuencia()
+
+    def adivinar_secuencia(self):
+        print("")
+        while self.intentos <= len(self.tablero):
+            operacion = input("¿Cuál es tu adivinanza de 8 elementos?: ")
+            while len(operacion) == len(self.adivinanza):
+                if len(operacion) == len(self.adivinanza):
+                    self.intentos += 1
+                    self.tablero.append([operacion])
+                    for i in range(self.cantidad):
+                        print(" ".join(self.tablero[i]))
+                    if operacion == self.adivinanza:
+                        print(f"Felicidades, has ganado en {self.intentos} intentos.")
+                        self.iniciar_nuevo_juego()
+                    else:
+                        for operador in operacion:
+                            for operar in self.adivinanza:
+                                if operador == operar and operador == int:
+                                    print("Tienes un  número encontrado.")
+
+                else:
+                    print(f"La adivinanza debe tener {len(self.adivinanza)} elementos.")
+                    self.adivinar_secuencia()
+                    self.intentos += 1
+
+
 
     def secuencia_no_adivinada(self):
         pass
@@ -37,5 +78,7 @@ class Jugador:
     def iniciar_nuevo_juego(self, opcion):
         pass
 
-    def
+
+numero_de_intentos = int(input("¿Cuántos intentos quieres tener?: "))
+jugador = Jugador(numero_de_intentos)
 
