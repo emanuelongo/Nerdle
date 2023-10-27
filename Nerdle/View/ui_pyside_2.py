@@ -1,4 +1,4 @@
-from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow
+from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QLineEdit, QLabel
 from PySide6.QtCore import QSize
 import sys
 
@@ -9,13 +9,12 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Hola Novia.")
         self.resize(480, 320)
 
-        boton = QPushButton("Tócame")
-        boton.clicked.connect(self.boton_clicado)
+        etiqueta = QLabel("Soy una etiqueta.")
+        fuente = etiqueta.font()
+        fuente.setPointSize(10)
+        etiqueta.setFont(fuente)
 
-        self.setCentralWidget(boton)
-
-    def boton_clicado(self):
-        print("Botón clicado.")
+        self.setCentralWidget(etiqueta)
 
 
 if __name__ == "__main__":
