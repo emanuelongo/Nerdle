@@ -2,9 +2,6 @@ class Nerdle:
     def __init__(self):
         pass
 
-    def generar_elemento(self):
-        pass
-
     def retroalimentar(self):
         pass
 
@@ -16,7 +13,7 @@ class Jugador:
     decision = True
 
     def __init__(self):
-        self.numero_de_intentos = int(input("¿Cuántos intentos quieres tener? (6 a 8): "))
+        self.numero_de_intentos: int = int(input("¿Cuántos intentos quieres tener? (6 a 8): "))
         self.tablero = []
         while self.repetir:
             if 5 < self.numero_de_intentos < 9:
