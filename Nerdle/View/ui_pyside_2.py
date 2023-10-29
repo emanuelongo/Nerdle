@@ -1,21 +1,14 @@
-from PySide6.QtWidgets import QApplication, QWidget, QPushButton, QMainWindow, QLineEdit, QLabel
-from PySide6.QtGui import QFont
-from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QApplication, QMainWindow, QRadioButton
 import sys
 
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Hola Novia.")
-        self.resize(480, 320)
 
-        etiqueta = QLabel("Soy una etiqueta.")
-        fuente = QFont("Comic Sans MS", 10)
-        etiqueta.setFont(fuente)
-        etiqueta.setAlignment(Qt.AlignHCenter | Qt.AlignVCenter)
+        radial = QRadioButton("Botón radial")
 
-        self.setCentralWidget(etiqueta)
+        self.setCentralWidget(radial)
 
 
 if __name__ == "__main__":
