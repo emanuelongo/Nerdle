@@ -2,7 +2,7 @@
 
 Esta versión de Nerdle fue creada por:
 
-Gallego cano Emanuel, Ospina Edison, Caro Alejandro.
+Gallego cano Emanuel
 
 ### Descripción Nerdle
 
